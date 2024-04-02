@@ -77,5 +77,24 @@ Radiobutton(ventana, text="Femenino",
 marcado = Label(ventana)
 marcado.grid(row=8, column=0)
 
+# Option Menu
+def seleccionar():
+    seleccionado.config(text=opcion.get())
+
+    seleccionado.config(bg="green", fg="white")
+
+
+opcion = StringVar()
+opcion.set("[Seleccione]")
+
+Label(ventana,text="Seleccione una opción: ").grid(row=9, column=0)
+select = OptionMenu(ventana, opcion, "[Seleccione]", "Opcion 1", "Opcion 2", "Opcion 3")
+select.grid(row=10, column=0)
+
+Button(ventana, text="Ver", command=seleccionar).grid(row=10, column=1)
+
+seleccionado = Label(ventana)
+seleccionado.grid(row=11, column=0)
+
 
 ventana.mainloop()
