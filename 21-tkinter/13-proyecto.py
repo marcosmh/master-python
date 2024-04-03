@@ -34,6 +34,7 @@ def home():
     home_label.grid(row=0, column=0)
 
     add_label.grid_remove()
+    add_frame.grid_remove()
     info_label.grid_remove()
     data_label.grid_remove()
 
@@ -51,6 +52,7 @@ def add():
     add_label.grid(row=0, column=0, columnspan=10)
     
     # Campos del formulario Añadir
+    add_frame.grid(row=1)
     add_name_label.grid(row=1, column=0, padx=6, pady=6, sticky=E)
     add_name_entry.grid(row=1, column=1, padx=6, pady=6, sticky=W)
 
@@ -82,11 +84,27 @@ def info():
     info_label.grid(row=0, column=0)
     data_label.grid(row=1, column=0)
 
+    add_frame.grid_remove()
     home_label.grid_remove()
     add_label.grid_remove()
     
+def add_product():
+    products.append([
+        name_data.get(),
+        price_data.get(),
+        description_data.get()
+        #add_description_entry.get("1.0","end-1c")
+    ])
+    name_data.set("")
+    price_data.set("")
+    description_data.set("")
+
+    print(products)
+    home()
+
 
 # Variables
+products = []
 name_data = StringVar()
 price_data = StringVar()    
 description_data = StringVar()
@@ -98,18 +116,20 @@ home_label = Label(ventana, text="Inicio")
 add_label = Label(ventana, text="Añadir")
 
 # Campos del formulario
-add_name_label = Label(ventana, text="Nombre: ")
-add_name_entry = Entry(ventana,textvariable=name_data)
+add_frame = Frame(ventana)
+add_name_label = Label(add_frame, text="Nombre: ")
+add_name_entry = Entry(add_frame,textvariable=name_data)
 
-add_price_label = Label(ventana, text="Precio: ")
-add_price_entry = Entry(ventana,textvariable=price_data)
+add_price_label = Label(add_frame, text="Precio: ")
+add_price_entry = Entry(add_frame,textvariable=price_data)
 
-add_description_label = Label(ventana, text="Descripción: ")
-add_description_entry = Entry(ventana,textvariable=description_data)
+add_description_label = Label(add_frame, text="Descripción: ")
+#add_description_entry = Entry(add_frame)
+add_description_entry = Entry(add_frame,textvariable=description_data)
 
-add_separator = Label(ventana)
+add_separator = Label(add_frame)
 
-boton = Button(ventana, text="Guardar")
+boton = Button(add_frame, text="Guardar", command=add_product)
 
 
 
