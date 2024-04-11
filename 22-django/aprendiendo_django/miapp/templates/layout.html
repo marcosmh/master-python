@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>
+            {% block title %}
+
+            {% endblock %}
+            | Marcos Magaña
+        </title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+    </head>
+    <body>
+        <h1>Sitio web con Django | Marcos Magana </h1>
+        <hr/>
+        <ul>
+            <li>
+                <a href="/inicio">Inicio</a>
+            </li>
+            <li>
+                <a href="/hola-mundo">Hola Mundo</a>
+            </li>
+            <li>
+                <a href="/pagina">Página</a>
+            </li>
+            <li>
+                <a href="/contacto">Contacto</a>
+            </li>
+        </ul>
+        <hr/>
+
+        <div id="content">
+            {% block content %}
+            <!-- Código que viene del bloque original -->
+                <strong>Contenido del bloque original!!</strong>
+            {% endblock %}
+        </div>
+        <hr/>
+        <footer>
+            Master en Python | Marcos Magaña
+        </footer>
+
+    </body>
+</html>

@@ -25,7 +25,8 @@ layout = """
 """
 
 def index(request):
-    html = """ 
+    html = "" 
+    """ 
         <h1>Inicio</h1>
         <p>Años hasta 2050: </p>
     """
@@ -37,30 +38,25 @@ def index(request):
 
     html += "</ul>"
 
-    return HttpResponse(layout+html)
+    return render(request, 'index.html')
 
-def hola_mundo(request):
-    return HttpResponse(layout+"""
-        <h1>Hola Mundo con Django 3.0.5!!</h1>
-        <h3>Soy Marcos Magaña </h3>
-    """)
+def hola_mundo(request):    
+    return render(request,'hola_mundo.html')
+
 
 def pagina(request, rediregir = 0):
     if rediregir == 1:
         #return redirect("/inicio/")
         return redirect('contacto', nombre="Marcos", apellidos="Magaña")
 
-    return HttpResponse(layout+"""
-    <h1>Página Web</h1>
-    <p>Creado por Marcos Magaña</p>
-""")
+    return render(request, 'pagina.html')
+    
 
 def contacto(request, nombre="", apellidos=""):
-    html = ""
-
-    html += "<h1>Contacto</h1>"    
+    html = "<h1>Contacto</h1>"    
     if nombre and apellidos:
         html += f"""
-        <p>{nombre} {apellidos}</p>
+            <p>{nombre} {apellidos}</p>
         """
+    
     return HttpResponse(layout+html)
