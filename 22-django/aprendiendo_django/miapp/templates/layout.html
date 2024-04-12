@@ -12,31 +12,45 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
     </head>
     <body>
-        <h1>Sitio web con Django | Marcos Magana </h1>
-        <hr/>
-        <ul>
-            <li>
-                <a href="/inicio">Inicio</a>
-            </li>
-            <li>
-                <a href="/hola-mundo">Hola Mundo</a>
-            </li>
-            <li>
-                <a href="/pagina">Página</a>
-            </li>
-            <li>
-                <a href="/contacto">Contacto</a>
-            </li>
-        </ul>
-        <hr/>
+        <header>
+            <div id="logotipo">
+                <img src="{% static 'images/logo.png' %}" />
+                <h1>Sitio web con Django </h1>
+            </div>
+        </header>
 
-        <div id="content">
-            {% block content %}
-            <!-- Código que viene del bloque original -->
-                <strong>Contenido del bloque original!!</strong>
-            {% endblock %}
+        <nav>
+            <ul>
+                <li>
+                    <a href="/inicio">Inicio</a>
+                </li>
+                <li>
+                    <a href="/hola-mundo">Hola Mundo</a>
+                </li>
+                <li>
+                    <a href="/pagina">Página</a>
+                </li>
+                <li>
+                    <a href="/contacto">Contacto</a>
+                </li>
+            </ul>    
+        </nav>
+
+        <div class="barra">
+            <span class="esquina-izquierda"></span>
+            <span class="relleno-barra"></span>
+            <span class="esquina-derecha"></span>
         </div>
-        <hr/>
+        
+        <div id="content">
+            <div class="box">
+                {% block content %}
+                <!-- Código que viene del bloque original -->
+                    <strong>Contenido del bloque original!!</strong>
+                {% endblock %}
+            </div>
+        </div>
+
         <footer>
             Master en Python | Marcos Magaña
         </footer>
