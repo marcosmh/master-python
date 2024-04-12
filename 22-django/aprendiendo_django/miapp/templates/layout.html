@@ -22,16 +22,16 @@
         <nav>
             <ul>
                 <li>
-                    <a href="/inicio">Inicio</a>
+                    <a href="{% url 'inicio' %}">Inicio</a>
                 </li>
                 <li>
-                    <a href="/hola-mundo">Hola Mundo</a>
+                    <a href="{% url 'hola_mundo' %}">Hola Mundo</a>
                 </li>
                 <li>
-                    <a href="/pagina">Página</a>
+                    <a href="{% url 'pagina' %}">Página</a>
                 </li>
                 <li>
-                    <a href="/contacto">Contacto</a>
+                    <a href="{% url 'contacto' 'Marcos' 'Magaña' %}">Contacto</a>
                 </li>
             </ul>    
         </nav>
@@ -52,7 +52,8 @@
         </div>
 
         <footer>
-            Master en Python | Marcos Magaña
+            Master en Python &copy; Marcos Magaña - {% now "d/m/Y" %}
+
         </footer>
 
     </body>

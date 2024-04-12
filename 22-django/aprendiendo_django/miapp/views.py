@@ -25,20 +25,17 @@ layout = """
 """
 
 def index(request):
-    html = "" 
-    """ 
-        <h1>Inicio</h1>
-        <p>Años hasta 2050: </p>
-    """
+    
     year = 2024
-    while year <= 2050:
-        if year % 2 == 0:
-            html += f"<li> {year} </li>"
-        year += 1
+    hasta = range(year, 2051)
+    lenguajes = ['Java','JavaScript','Python','C','C++','C#']
 
-    html += "</ul>"
-
-    return render(request, 'index.html')
+    return render(request, 'index.html', {
+        'mi_variable': 'Soy un dato que viene de la vista',
+        'nombre': 'Marcos Magaña',
+        'lenguajes': lenguajes,
+        'years': hasta
+    })
 
 def hola_mundo(request):    
     return render(request,'hola_mundo.html')
