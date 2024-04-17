@@ -46,7 +46,10 @@ def pagina(request, rediregir = 0):
         #return redirect("/inicio/")
         return redirect('contacto', nombre="Marcos", apellidos="Magaña")
 
-    return render(request, 'pagina.html')
+    return render(request, 'pagina.html',{
+        'texto': 'XXXX',
+        'lista': ['Java','Python','C#']
+    })
     
 
 def contacto(request, nombre="", apellidos=""):
