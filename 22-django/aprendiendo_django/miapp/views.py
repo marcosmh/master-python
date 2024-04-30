@@ -106,7 +106,7 @@ def actualizar_articulo(request,id):
 
 
 """
-Ejemplos de consultas en django
+Ejemplos de consultas en django:
         articulos = Article.objects.filter(title='MadMax', id=7)
         articulos = Article.objects.filter(title__contains = "Game")
         articulos = Article.objects.filter(title__iexact = "MadMax")
@@ -122,21 +122,21 @@ Ejemplos de consultas en django
          ).exclude(
              public=True
          )
+
+         articulos = Article.objects.raw(
+             "SELECT * FROM miapp_article"
+         )
+
+         articulos = Article.objects.raw(
+            "SELECT * FROM miapp_article WHERE public = 0 "
+         )
 """
 def articulos(request):
     response = None
     articulos = None
     try:
-        #articulos = Article.objects.all().order_by('id')        
-         articulos = Article.objects.filter(
-             title="Terminador 2",             
-         ).exclude(
-             public=True
-         )
-
-
-        
-
+        articulos = Article.objects.all().order_by('id')        
+         
     except:
         response = f"<strong>No se encontraron registros.</strong>"
     
