@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from miapp.models import Article
+from django.db.models import Q
 
 # Create your views here.
 # MVC = Modelo Vista    Controlador -> Acciones(metodos)
@@ -130,18 +131,23 @@ Ejemplos de consultas en django:
          articulos = Article.objects.raw(
             "SELECT * FROM miapp_article WHERE public = 0 "
          )
+
+         articulos = Article.objects.filter(
+            Q(title__contains="MadMax") | Q(title__contains="Iron Man")
+        )
 """
 def articulos(request):
     response = None
     articulos = None
     try:
         articulos = Article.objects.all().order_by('id')        
+        response = articulos
          
     except:
         response = f"<strong>No se encontraron registros.</strong>"
     
     return render(request, 'articulos.html',{
-        'articulos': articulos
+        'articulos': response
     })
 
 def borrar_articulo(request, id):
