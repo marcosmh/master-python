@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+
+{% block title  %} Listado de Articulos {% endblock %}
+
+{% block content %}
+<h1 class="title">Listado de Articulos</h1>
+
+    <ul>
+    {% for articulo in articulos %}
+        <li> 
+          <h4> {{ articulo.id }}.  {{ articulo.title }} </h4>
+          <span>{{ articulo.created_at }}</span>
+          {% if articulo.public %}
+            <span> <strong>Público</strong> </span>
+          {% else %}  
+          <span> <strong>Público</strong> </span>
+          {% endif %}   
+
+          <p> {{ articulo.content }} 
+             <a href="{% url 'borrar_articulo' articulo.id %}">Eliminar</a>
+          </p>
+
+        </li>
+    {% endfor %}
+    </ul>
+
+    <br/>
+
+    <table>
+        <tr>
+          <th>ID</th>
+          <th>Articulo</th>
+          <th>Contenido</th>
+          <th>Fecha</th>
+          <th>Visibilidad</th>
+          <th>Acción</th>
+        </tr>
+        {% for articulo in articulos %}
+        <tr>
+          <td>{{ articulo.id }}</td>
+          <td>{{ articulo.title }}</td>
+          <td>{{ articulo.content }}</td>
+          <td>{{ articulo.created_at }}</td>
+          <td>
+            {% if articulo.public %}
+              <strong>Público</strong>
+            {% else %}  
+              <strong>Privado</strong>
+            {% endif %}  
+          </td>
+          <td><a href="{% url 'borrar_articulo' articulo.id %}">Eliminar</a></td>
+        </tr>
+        {% endfor %}        
+      </table>
+
+{% endblock %}

@@ -12,3 +12,9 @@
 
 ### levantar app Django
 * python manage.py runserver
+
+### django sqlite
+* crear models
+* python manage.py makemigrations
+* python manage.py sqlmigrate miapp 0001 - (nombre de la app y número de migración)
+* python manage.py migrate
