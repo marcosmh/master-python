@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from miapp.models import Article
 from django.db.models import Q
+from miapp.forms import FormArticle
 
 # Create your views here.
 # MVC = Modelo Vista    Controlador -> Acciones(metodos)
@@ -161,3 +162,36 @@ def borrar_articulo(request, id):
         response = f"<strong>Error al borrar al articulos.</strong>"
 
     return HttpResponse(response)
+
+def save_article(request):
+    mensaje = None
+    try:
+        if request.method == 'POST':
+            title = request.POST['title']
+            content = request.POST['content']
+            public = request.POST['public']
+
+            articulo = Article(
+                title = title,
+                content = content,
+                public =  public        
+            )
+            articulo.save()
+            mensaje = f"Usuario creado.  {articulo.title} - {articulo.content} "
+        else:
+            mensaje = f"<h2> Error al crear el Articulo</h2>"
+    except Exception as e:
+        mensaje = "Ha ocurrido un error ", type(e).__name__
+        print(mensaje)
+
+
+    return HttpResponse(mensaje)
+
+def create_article(request):
+    return render(request, 'create_article.html')
+
+def create_full_article(request):
+    formulario = FormArticle()
+    return render(request,'create_full_article.html',{
+        'form': formulario
+    })
