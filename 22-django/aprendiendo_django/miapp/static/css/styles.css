@@ -188,6 +188,21 @@ nav ul li a:hover {
     transition: 300ms all;
 }
 
+.error {
+    color: red;
+    text-shadow: 0px 0px 2px black;
+}
+
+.message {    
+    padding: 20px;
+    background: #1f7e58;
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+
+}
+
+
 footer {
     width: 1250px;
     background-color: #1b1f1f;

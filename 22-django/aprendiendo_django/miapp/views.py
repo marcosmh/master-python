@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from miapp.models import Article
 from django.db.models import Q
 from miapp.forms import FormArticle
+from django.contrib import messages
 
 # Create your views here.
 # MVC = Modelo Vista    Controlador -> Acciones(metodos)
@@ -209,9 +210,10 @@ def create_full_article(request):
                         public  = public
                     )
                 articulo.save()
-                return redirect('articulos')
-            else:
-                formulario = FormArticle()
+
+                # crear mensaje flash
+                messages.success(request,f'Se ha guardado el Articulo. ID= {articulo.id}')
+                return redirect('articulos')            
         except Exception as e:
             mensaje = "Exception: -> Ha ocurrido un error: ", type(e).__name__
             print(e)
