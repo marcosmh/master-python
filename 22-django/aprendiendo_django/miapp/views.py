@@ -190,8 +190,35 @@ def save_article(request):
 def create_article(request):
     return render(request, 'create_article.html')
 
+
+
 def create_full_article(request):
-    formulario = FormArticle()
-    return render(request,'create_full_article.html',{
-        'form': formulario
-    })
+        
+    if request.method == 'POST':
+        try:
+            formulario = FormArticle(request.POST)   
+            if formulario.is_valid():     
+                data_form = formulario.cleaned_data
+                title   = data_form.get('title')
+                content = data_form['content']
+                public  = data_form['public']
+                print(title +' - '+ content +' - '+public)
+                articulo = Article(
+                        title   = title,
+                        content = content,
+                        public  = public
+                    )
+                articulo.save()
+                return redirect('articulos')
+            else:
+                formulario = FormArticle()
+        except Exception as e:
+            mensaje = "Exception: -> Ha ocurrido un error: ", type(e).__name__
+            print(e)
+            print(mensaje)            
+    else:
+        formulario = FormArticle()
+
+    return render(request, 'create_full_article.html', {
+            'form': formulario
+        })

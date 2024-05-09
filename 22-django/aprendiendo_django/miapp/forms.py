@@ -10,9 +10,8 @@ class FormArticle(forms.Form):
     )
 
     public_options = [
-        ('',['Seleccione.']),
-        (1,['SI']),
-        (2,['NO'])
+        (1,'SI'),
+        (2,'NO')
     ]
     public = forms.TypedChoiceField(
         label = "Publico",
