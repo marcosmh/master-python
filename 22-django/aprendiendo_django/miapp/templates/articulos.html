@@ -14,31 +14,28 @@
   {% endfor %}
 {% endif %}
 <br/>
-    <ul>
+
     {% for articulo in articulos %}
         
         {% if articulo.image|length > 1 %}
-          <div class="img">
+          <div class="image">
             <img src="{{ articulo.image.url }}" width="100" height="100" />
           </div>
         {% endif %}
 
-        <li> 
-          <h4> {{ articulo.id }}.  {{ articulo.title }} </h4>
-          <span>{{ articulo.created_at }}</span>
-          {% if articulo.public %}
-            <span> <strong>Público</strong> </span>
-          {% else %}  
-            <span> <strong>Privado</strong> </span>
-          {% endif %}   
-
-          <p> {{ articulo.content }} 
-             <a href="{% url 'borrar_articulo' articulo.id %}">Eliminar</a>
-          </p>
-
-        </li>
+        <article class="article-item"> 
+          <h2>{{ articulo.title }} </h2>
+          <div clas="data">
+              <span>{{ articulo.created_at }}</span>
+              <br/>
+              <p> {{ articulo.content }} 
+                <a href="{% url 'borrar_articulo' articulo.id %}" class="btn btn-delete">Eliminar</a>
+              </p>
+          </div>
+          <div class="clearfix"></div>
+        </article>
     {% endfor %}
-    </ul>
+    
 
     <br/>
 
@@ -72,7 +69,7 @@
               </div>
             {% endif %}
           </td>
-          <td><a href="{% url 'borrar_articulo' articulo.id %}">Eliminar</a></td>
+          <td><a href="{% url 'borrar_articulo' articulo.id %}" class="btn btn-delete">Eliminar</a></td>
         </tr>
         {% endfor %}        
       </table>
