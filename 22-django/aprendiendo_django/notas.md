@@ -10,6 +10,12 @@
 ### activar enviroment virtual
 * pyenv activate env
 
+### crear proyecto
+* django-admin startproject aprendiendo_django
+
+### crear apps
+* python manage.py startapp AprendiendoDjango
+
 ### levantar app Django
 * python manage.py runserver
 
