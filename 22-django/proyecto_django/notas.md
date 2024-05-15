@@ -25,5 +25,8 @@
 * python manage.py sqlmigrate pages 0001 - (nombre de la app y número de migración)
 * python manage.py migrate
 
-# consola django admin
+### consola django admin
 * python manage.py createsuperuser
+
+### instalar apps externas
+* pip install django-ckeditor
