@@ -12,10 +12,11 @@ def category(request):
     })
 
 
-def article(request):
+def list(request):
 
-    article = "Article"
+    articles = Article.objects.all();
     
-    return render(request,"blog/article.html",{
-        "article": article
+    return render(request,"articles/list.html",{
+        "title": "Artículos",
+        "articles": articles
     })
