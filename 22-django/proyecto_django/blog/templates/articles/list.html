@@ -7,39 +7,6 @@
 
     <h1 class="title">{{ title }}</h1>
 
-    {% for article in articles %}
-        
-        {% if article.image|length > 1 %}
-          <div class="image">
-            <img src="{{ article.image.url }}" width="100" height="100" />
-          </div>
-        {% endif %}
-
-        <article class="article-item"> 
-          <h2>{{ article.title }} </h2>
-          <div clas="data">
-              <p>
-                {% for category in article.categories.all %}
-                   <a href="#"> {{ category }} </a> 
-
-                   {% if forloop.counter < article.categories.all|length %}
-                    {{'-'}}
-                   {% endif %}
-                {% endfor %}
-              </p>
-              <span>
-                {{ article.user.first_name }} {{ article.user.last_name }}
-                |
-                {{ article.created_at }}
-              </span>
-              <br/>
-              <p> 
-                {{ article.content|safe }} 
-              </p>
-          </div>
-          <div class="clearfix"></div>
-        </article>
-    {% endfor %}
-    
+    {% include 'articles/articles.html' %}    
 
 {% endblock %}

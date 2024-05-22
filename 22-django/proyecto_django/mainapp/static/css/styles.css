@@ -16,6 +16,17 @@
     margin-bottom: 10px;
 }
 
+.box a {
+   color: #444;
+   transition: 300ms;
+}
+
+.box a:hover {
+    transition: 100ms;
+    color: #1f7e58;
+ }
+
+
 .clearfix {
     clear: both;
     float: none;
