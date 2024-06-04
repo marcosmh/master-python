@@ -39,6 +39,9 @@
                         <a href="{% url 'pagina' page.2 %}">{{ page.1 }}</a> 
                     </li>
                 {% endfor %}
+                <li>
+                    <a href="{% url 'register' %}">Registro</a>
+                </li>
             </ul>    
         </nav>
 
@@ -59,7 +62,6 @@
 
         <footer>
             Master en Python &copy; Marcos Magaña - {% now "d/m/Y" %}
-
         </footer>
 
     </body>
