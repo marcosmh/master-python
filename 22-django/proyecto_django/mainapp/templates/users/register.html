@@ -7,11 +7,21 @@
 
     <h1>{{ title }}</h1>
 
+    {{ register_form.errors }}
+
     <form method="post" action="">
         {% csrf_token %}
         
-        {{ register_form.as_p }}
+        {% comment %}
+            {{ register_form.as_p }}
+        {% endcomment %}
 
+        {% for field in register_form %}
+           <label> {{ field.label }} </label>
+            {{ field }}
+        {% endfor %}
+        
+        <br/>
         <input type="submit" value="Registrarse" />
 
     </form>

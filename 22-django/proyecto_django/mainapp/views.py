@@ -1,5 +1,9 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from mainapp.forms import RegisterForm
+
 
 
 # Create your views here.
@@ -15,18 +19,45 @@ def about(request):
     })
 
 def register_page(request):
-    register_form = UserCreationForm()
+    
+    if request.user.is_authenticated:
+        return redirect('inicio')
+    else:
+        register_form = RegisterForm(request.POST)
+        if request.method == "POST":
+            
+            if register_form.is_valid():
+                register_form.save()
+                messages.success(request,'Usuario se ha guardado correctamente.')
 
-    if request.method == "POST":
-        register_form = UserCreationForm(request.POST)
+                return redirect('inicio')
 
-        if register_form.is_valid():
-            register_form.save()
+        return render(request,'users/register.html',{
+            'title': 'Registro',
+            'register_form': register_form
+        })
 
-            return redirect('inicio')
+def login_page(request):
+    if request.user.is_authenticated:
+        return redirect('inicio')
+    else:
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password']
 
-    return render(request,'users/register.html',{
-        'title': 'Registro',
-        'register_form': register_form
+            user = authenticate(request, username=username, password=password)
+            print("user:" , user)
 
-    })
+            if user is not None:
+                login(request, user)
+                return redirect('inicio')
+            else:
+                messages.warning(request,'Usuario No Valido ó Contraseña Incorrecta')
+
+        return render(request,'users/login.html',{
+            'title': 'Iniciar Sesión'
+        })
+
+def logout_page(request):
+    logout(request)
+    return redirect('login')
