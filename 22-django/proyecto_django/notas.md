@@ -30,3 +30,11 @@
 
 ### instalar apps externas
 * pip install django-ckeditor
+
+### Configurar BD MYSQL
+- brew link --force mysql-client
+- echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
+- brew link --force mysql-client
+- brew unlink mysql-client && brew link --force mysql-client
+- echo 'export PATH="/usr/local/opt/mysql-client/bin:$PATH"' >> ~/.zshrc
+- pip install mysqlclient
