@@ -1,29 +1,33 @@
-<!DOCTYPE <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <title>Aprendiendo Flask - Master en Python</title>
-    </head>
-    <body>
-        <h1>Aprendiendo Flask - Master en Python</h1>
-        <hr/>
-            <ul>
-                <li>
-                    <a href="/">Inicio</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('informacion') }}">Información</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('contacto') }}">Contacto</a>
-                </li>
-                <li>
-                    <a href="{{ url_for('lenguajes') }}">Lenguajes de Programación</a>
-                </li>
-            </ul>
-        <hr/>
+{% extends "layout.html" %}
 
-        <h1>Aprendiendo Flask</h1>
+{% block title %} Inicio {% endblock %}
 
-    </body>
-</html>
+{% block content %}
+   <h1>Página de Inicio -  Aprendiendo Flask</h1>
+   <br/>
+
+   {% if edad >= 18 and edad <= 100 %}
+      <h2>Eres mayor de edad</h2>   
+   {% elif edad > 100 %}
+      <h2>Eres un Adulto Mayor</h2>  
+   {% elif edad < 18 %}
+      <h2>Eres menor de edad</h2>
+   {% endif %}
+
+   <p>Tu edad es: {{ edad }} </p>
+   <br/>
+
+
+   {{ dato1 }}
+   <br/>
+   {{ dato2 }}
+   <br/>
+   {{ lista }}
+   <br/><br/>
+
+   {# Comentario #}
+
+   {% include 'includes/personas.html' %}
+
+
+{% endblock %}

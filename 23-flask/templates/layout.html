@@ -1,0 +1,57 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title> {% block title %} Master en Python {% endblock %} | Aprendiendo Flask</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" />
+    </head>
+    <body>
+        <!--<h1>Aprendiendo Flask - Master en Python</h1>-->
+        <hr/>
+        <header>
+            <div id="logotipo">
+                <img src="{{ url_for('static',filename='images/flask3.png') }}" />
+                <h1>Proyecto con Flask </h1>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Inicio</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('informacion') }}">Información</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('contacto') }}">Contacto</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('lenguajes') }}">Lenguajes de Programación</a>
+                </li>
+            </ul>    
+        </nav>
+
+        <div class="barra">
+            <span class="esquina-izquierda"></span>
+            <span class="relleno-barra"></span>
+            <span class="esquina-derecha"></span>
+        </div>
+        
+        <div id="content">
+            <div class="box">
+                {% block content %}
+                <!-- Código que viene del bloque original -->
+                    <strong>Contenido del bloque original!!</strong>
+                {% endblock %}
+            </div>
+        </div>
+
+        <footer>
+            Master en Python &copy; Marcos Magaña - {{ now.day }}/{{ now.month }}/{{ now.year }}
+        </footer>
+
+
+
+    </body>
+</html>

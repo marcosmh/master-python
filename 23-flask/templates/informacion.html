@@ -1,30 +1,9 @@
-<!DOCTYPE <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <title>Aprendiendo Flask - Master en Python</title>
-    </head>
-    <body>
-        <h1>Aprendiendo Flask - Master en Python</h1>
-        <hr/>
-        <ul>
-            <li>
-                <a href="/">Inicio</a>
-            </li>
-            <li>
-                <a href="{{ url_for('informacion') }}">Información</a>
-            </li>
-            <li>
-                <a href="{{ url_for('contacto') }}">Contacto</a>
-            </li>
-            <li>
-                <a href="{{ url_for('lenguajes') }}">Lenguajes de Programación</a>
-            </li>
-        </ul>
-       <hr/>
+{% extends "layout.html" %}
 
-        <h1>Página de información</h1>
-        <h3>{{texto}}<h3>
+{% block title %} Info {% endblock %}
 
-    </body>
-</html>
+{% block content %}
+    <h1>Página de información</h1>
+    <h3>{{texto}}<h3>
+{% endblock %}
+
