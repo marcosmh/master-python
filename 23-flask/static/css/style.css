@@ -295,12 +295,20 @@ nav > ul > li:hover > ul > li:hover a {
 .btn {
     padding: 6px;
     background: red;
-    color: white;
+    color: white !important;
     border: 1px solid black;
     display: block;
     margin-top: 20px;
     width: 60px;
     text-align: center;
+}
+
+.btn-warning {
+    background: rgb(243, 162,32)
+}
+
+.btn-danger {
+    background: rgb(207,48,48)
 }
 
 
