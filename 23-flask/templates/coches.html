@@ -38,7 +38,7 @@
             </p>
 
             <p>
-                <a href="" class="btn btn-warning">Editar</a>
+                <a href="{{ url_for('editar_coche',coche_id=coche.0) }}" class="btn btn-warning">Editar</a>
                 <a href="{{ url_for('borrar_coche',coche_id=coche.0) }}" class="btn btn-danger">Eliminar</a>
             </p>
 
